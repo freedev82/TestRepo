@@ -1,0 +1,29 @@
+@startuml
+title Parser Class Diagram
+namespace connector {
+    class AbstractConnector << (S,Aquamarine) >> {
+        + IsConnect bool
+
+        + Init() 
+
+    }
+    interface Connector  {
+        + Init() 
+        + Connect() 
+        + Close() 
+
+    }
+    class ModbusTCPConnector << (S,Aquamarine) >> {
+        - client *modbus.TCPClientHandler
+
+        + Connect() 
+        + Close() 
+        + Read() 
+
+    }
+}
+"connector.AbstractConnector" *-- "extends""connector.ModbusTCPConnector"
+
+
+
+@enduml
